@@ -81,10 +81,10 @@ DOPRINOSI = 17.3  # Doprinosi na bruto (zdravstvo etc.)
 MIO = 20   # Mirovinsko osiguranje (15% prvi stup i 5% drugi stup)
 
 # porez
-OSNOVNI_ODBITAK = 1800  # minimalni neoporezivi iznos za područja
+OSNOVNI_ODBITAK = 2200  # minimalni neoporezivi iznos za područja
                         # koja NISU od posebne državne skrbi
 STOPA1 = 12 # do 2X osnovnog odbitka
-GRANICA1 = 2 * OSNOVNI_ODBITAK
+GRANICA1 = 1 * OSNOVNI_ODBITAK
 STOPA2 = 25 # 2X - 5X
 GRANICA2 = 5 * OSNOVNI_ODBITAK
 STOPA3 = 35 # 5X - 14X
