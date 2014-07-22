@@ -7,6 +7,7 @@
 # obrazovanju i znanosti.                                               |
 #   Krešimir Kumerički (kkumer@phy.hr)                                  |
 #                                                                       |
+# Verzija: 2.0  2014-07-22    Nakon ukidanja kolektivnog ugovora        |
 # Verzija: 1.3  2012-03-15    Korekcija poreznih razreda NN 22/12       |
 # Verzija: 1.2  2011-07-18    Update za novu definiciju osnovice        |
 # Verzija: 1.1  2006-11-13    Update prema KPMG brosuri                 |
@@ -22,7 +23,7 @@
 
                   
 # Uredba o koeficijentima 
-#  ima PDF na http://www.nsz.hr/propisi-zakoni.php
+#  ima PDF na http://www.nsz.hr/pravo-i-propisi/dokumenti/
 # Namještenici u javnim službama
 #KOEFICIJENT = 0.62   # Radna mjesta IV vrste
 #KOEFICIJENT = 0.80   # Radna mjesta III vrste, daktilograf
@@ -32,17 +33,19 @@
 #KOEFICIJENT = 1.30   # Stručni suradnik I
 #KOEFICIJENT = 1.45   # Asistent
 #KOEFICIJENT = 1.65   # Viši asistent, viši predavač, viši knjižničar
-KOEFICIJENT = 1.9   # Docent, znanstveni suradnik, knjižničarski savjetnik
-#KOEFICIJENT = 2.1   # Izvanredni profesor, viši znanstveni suradnik
+#KOEFICIJENT = 1.9   # Docent, znanstveni suradnik, knjižničarski savjetnik
+KOEFICIJENT = 2.1   # Izvanredni profesor, viši znanstveni suradnik
+KOEFICIJENT = 2.037   # Linić i Milanović umanjili za 3% 2013.
 #KOEFICIJENT = 2.5   # Redoviti profesor, znanstveni savjetnik (1. izbor)
 #KOEFICI3ENT = 3.05   # Redoviti profesor, znanstveni savjetnik (2. izbor)
 
-STAZ = 12  # godine staža
+STAZ = 20  # godine staža
 
-DOKTORAT = 15  # Od 2004. godine doktori u znanstveno-nastavnim zvanjima 
-               # trebaju staviti 15. Inace 0.
+# Dodatak za znanstveni stupanj:
+DOKTORAT = 0.15  # Doktori u znanstveno-nastavnim zvanjima 
+                 # trebaju staviti 0.15. Inače 0.
 
-FAKTOR_ODBITKA = 1.5   # Jedno dijete: 1.5     Troje djece: 3.2
+FAKTOR_ODBITKA = 1.0   # Jedno dijete: 1.5     Troje djece: 3.2
                        # Dvoje djece: 2.2      Četvoro djece: 4.6
                        # Petero djece: 6.5
                        # Uzdržavani supružnik (ili alimentacija):
@@ -54,7 +57,6 @@ CLAN_SINDIKATA = 1 # 1=član  0=nečlan
 # Zagreb = 18, Dubrovnik = 15, Varaždin = 10, Karlovac = 12, Osijek = 13,
 # Samobor, Stubičke Toplice = 0 ...
 # Pogledajte stopu prireza za svoje prebivalište
-# na adresi http://www.ijf.hr//HPS/gradski.pdf
 
 PRIREZ = 18
 
@@ -71,13 +73,14 @@ PRIREZ = 18
 #OSNOVICA = 5320.45   # famoznih -6% zbog krize, prema sporazumu sa Sindikatima
 #OSNOVICA = 5557.13 
 OSNOVICA =  5679.39   # 2.2% porasta pocevsi od place 01.08.2011. (Zasto ne 2%?)
+OSNOVICA =  5810.03   # 2.3% porasta pocevsi od place 01.08.2012.
 STARA_OSNOVICA = OSNOVICA
 OSNOVICA =  5108.84   # Ujedinjenje osnovica javnih sluzbi od 2011.
 
 
 KOREKCIJA_OSNOVICE = STARA_OSNOVICA/OSNOVICA - 1
 
-DOPRINOSI = 17.3  # Doprinosi na bruto (zdravstvo etc.)
+DOPRINOSI = 17.3  # Doprinosi na bruto (zdravstvo, ozljede, zaposljavanje etc.)
 MIO = 20   # Mirovinsko osiguranje (15% prvi stup i 5% drugi stup)
 
 # porez
@@ -99,40 +102,49 @@ HARAC = 0  # harac
 
 SINDIKAT = 1.3
 
-# --------------------------------------------------------
 
 import sys, math
 
-print 72*"-"
 BODOVI = KOEFICIJENT * (1 + STAZ*0.5/100)
-# Zaokruzivanje na tri decimale (na čudan način!)
-BODOVI = math.floor(BODOVI*1000.+0.500001)/1000.
 
-print "Osnovica (vrijednost boda) = %.2f" % OSNOVICA
-print "Staž = %i godina" % STAZ
-print "Broj bodova = %.3f" % BODOVI   # Prije uvećanja
+fsr =  '{:>35s} = {:9.2f}'
+f3sr = '{:>35s} = {:9.3f}'
+psr =  '{:>28s} ({:d} %) = {:9.2f}'
+isr =  '{:>35s} = {:9d}'
+ln  =  50*'-'
+lln  =  50*'='
 
-REDOVNIRAD = BODOVI * OSNOVICA
-print "Redovni rad MZOS = %.2f" % REDOVNIRAD
+print ln
+print fsr.format('Osnovica', OSNOVICA)
+print f3sr.format('Koeficijent', KOEFICIJENT)
+print isr.format('Staz (god.)', STAZ)
+
+REDOVNIRAD = KOEFICIJENT * OSNOVICA
+MINULIRAD = REDOVNIRAD * STAZ * 0.5/100
+print fsr.format('Redovni rad (+neradni dani i g.o)', REDOVNIRAD)
+print fsr.format('Minuli rad', MINULIRAD)
+
+# Do 2014. je bilo:
+#DRKOEF = BODOVI * DOKTORAT * (1+KOREKCIJA_OSNOVICE) 
+DRKOEF = BODOVI * DOKTORAT
+DR_UVECANJE = DRKOEF * OSNOVICA
+print fsr.format('Dodatak za doktorat', DR_UVECANJE)
+
 # Uvećanja
 KORKOEF = BODOVI * KOREKCIJA_OSNOVICE
 KOR_UVECANJE = KORKOEF * OSNOVICA
-print "Uvecanje = %.2f (%.2f bod.)" % (KOR_UVECANJE, KORKOEF)
-
-DRKOEF = BODOVI * DOKTORAT/100. * (1+KOREKCIJA_OSNOVICE) 
-DR_UVECANJE = DRKOEF * OSNOVICA
-print "Uvecanje (PhD) = %.2f (%.2f bod)" % (DR_UVECANJE, DRKOEF)
+print fsr.format('Dodatak po sporazumu', KOR_UVECANJE)
 
 
-OSTVARENO = REDOVNIRAD + KOR_UVECANJE + DR_UVECANJE 
-print "Ostvareni dio = %.2f" % OSTVARENO
 
+OSTVARENO = REDOVNIRAD + MINULIRAD + DR_UVECANJE + KOR_UVECANJE 
 
+print fsr.format('Bruto', OSTVARENO)
+print ln
+print fsr.format('Mirovinsko', OSTVARENO*MIO/100.)
 DOHODAK = OSTVARENO * (1 - MIO/100.0)
-#DOHODAK = OSNOVICA * BODOVI
-#DOHODAK = 10542.09
+print fsr.format('Dohodak', DOHODAK)
 
-print "Dohodak = %.2f" % DOHODAK
 
 NEOPOREZIVO = OSNOVNI_ODBITAK * FAKTOR_ODBITKA
 
@@ -144,49 +156,57 @@ if DOH < 0:
 
 POREZ2 = 0
 POREZ3 = 0
-print 30*'-'
-print "Neoporezivi dio = %.2f" % NEOPOREZIVO
+print ln
+print fsr.format('Neoporezivi dio', NEOPOREZIVO)
 if DOH < GRANICA1:
     POREZ1 = DOH * STOPA1/100.0
-    print "porez (%d %%) = %.2f" % (STOPA1, POREZ1)
+    print psr.format('Porez', STOPA1, POREZ1)
 else:
     POREZ1 = GRANICA1 * STOPA1/100.0
-    print "porez (%d %%) = %.2f" % (STOPA1, POREZ1)
+    print psr.format('Porez', STOPA1, POREZ1)
     if DOH < GRANICA2:
         POREZ2 = (DOH - GRANICA1) * STOPA2/100.0
-        print "porez (%d %%) = %.2f" % (STOPA2, POREZ2)
+        print psr.format('Porez', STOPA2, POREZ2)
     else:
         POREZ2 = (GRANICA2 - GRANICA1) * STOPA2/100.0
-        print "porez (%d %%) = %.2f" % (STOPA2, POREZ2)
+        print psr.format('Porez', STOPA2, POREZ2)
         if DOH < GRANICA3:
             POREZ3 = (DOH - GRANICA2) * STOPA3/100.0
-            print "porez (%d %%) = %.2f" % (STOPA3, POREZ3)
+            print psr.format('Porez', STOPA3, POREZ3)
         else:
             sys.stderr.write('Prevelika plaća!!\n')
             sys.exit(1)
 
 POREZ = POREZ1 + POREZ2 + POREZ3
 
-print "Ukupni porez = %.2f"  % POREZ
-print 30*'-'
 
 PRIREZ_IZNOS = POREZ * PRIREZ/100.0
 
-print "Prirez = %.2f (%.2f posto)" % (PRIREZ_IZNOS, PRIREZ)
+print psr.format('Prirez', PRIREZ, PRIREZ_IZNOS)
 
-NETOPRIJE = DOHODAK - POREZ - PRIREZ_IZNOS
+POREZ += PRIREZ_IZNOS
+
+print fsr.format('Ukupni porez i prirez', POREZ)
+print ln
+
+NETOPRIJE = DOHODAK - POREZ
 
 NETO = NETOPRIJE * (1.- HARAC/100.0)
 
-print "Ukupno primanja = %.2f " % NETO
+print fsr.format('Neto', NETO)
 
 #print "Harac = %.2f"  % (NETOPRIJE * HARAC/100.)
 
 if CLAN_SINDIKATA:
     SINDIKAT_IZNOS = NETO*SINDIKAT/100.0
-    print "Obustave = %.2f" % SINDIKAT_IZNOS
+    print fsr.format('Obustave', SINDIKAT_IZNOS)
     NETO = NETO - SINDIKAT_IZNOS
 
-print 72*"-"
-print "Plaća na tekući račun:   %.2f  HRK"  % NETO
-print 72*"-" + '\n'
+print lln
+print fsr.format('Iznos za isplatu', NETO)
+print lln
+
+print fsr.format('Doprinosi na placu', OSTVARENO*DOPRINOSI/100.)
+print fsr.format('Ukupan trosak place', OSTVARENO*(1.+DOPRINOSI/100.))
+print ln
+
