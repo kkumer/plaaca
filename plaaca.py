@@ -7,16 +7,14 @@
 # obrazovanju i znanosti.                                               |
 #   Krešimir Kumerički (kkumer@phy.hr)                                  |
 #                                                                       |
+# Verzija: 1.3  2012-03-15    Korekcija poreznih razreda NN 22/12       |
 # Verzija: 1.2  2011-07-18    Update za novu definiciju osnovice        |
 # Verzija: 1.1  2006-11-13    Update prema KPMG brosuri                 |
 # Verzija: 1.0  2004-02-15    Prva verzija                              |
 #                                                                       |
 # TODO:                                                                 |
-#  - područja posebne državne skrbi                                     |
-#  - porez 45% (iznad 21 000 kuna)                                      |
 #  - dodaci na uzdržavane osobe                                         |
 #  - ratni i vojni invalidi etc.                                        |
-#  - otkud tih 1-2 promila razlike prema kadrovskoj službi?             |
 # ----------------------------------------------------------------------+
                                                                         
 
@@ -34,19 +32,21 @@
 #KOEFICIJENT = 1.30   # Stručni suradnik I
 #KOEFICIJENT = 1.45   # Asistent
 #KOEFICIJENT = 1.65   # Viši asistent, viši predavač, viši knjižničar
-#KOEFICIJENT = 1.9   # Docent, znanstveni suradnik, knjižničarski savjetnik
-KOEFICIJENT = 2.1   # Izvanredni profesor, viši znanstveni suradnik
+KOEFICIJENT = 1.9   # Docent, znanstveni suradnik, knjižničarski savjetnik
+#KOEFICIJENT = 2.1   # Izvanredni profesor, viši znanstveni suradnik
 #KOEFICIJENT = 2.5   # Redoviti profesor, znanstveni savjetnik (1. izbor)
 #KOEFICI3ENT = 3.05   # Redoviti profesor, znanstveni savjetnik (2. izbor)
 
-STAZ = 18  # godine staža
+STAZ = 12  # godine staža
 
 DOKTORAT = 15  # Od 2004. godine doktori u znanstveno-nastavnim zvanjima 
                # trebaju staviti 15. Inace 0.
 
-FAKTOR_ODBITKA = 2.2   # Jedno dijete: 1.5     Troje djece: 3.2
-                       # Dvoje djece: 2.2      Cetvoro djece: 4.6
-                       # Uzdržavani supružnik: +0.5
+FAKTOR_ODBITKA = 1.5   # Jedno dijete: 1.5     Troje djece: 3.2
+                       # Dvoje djece: 2.2      Četvoro djece: 4.6
+                       # Petero djece: 6.5
+                       # Uzdržavani supružnik (ili alimentacija):
+                       #  +0.5 na gornje brojke  (dakle 1.5 ako nema djece)
 
 CLAN_SINDIKATA = 1 # 1=član  0=nečlan
 
@@ -69,7 +69,7 @@ PRIREZ = 18
 #OSNOVICA = 5320.45    # 2% porasta pocevsi od place 01.08.2008.
 #OSNOVICA = 5639.67   # 6% porasta pocevsi od place 01.08.2009. (OCEKIVANO)
 #OSNOVICA = 5320.45   # famoznih -6% zbog krize, prema sporazumu sa Sindikatima
-OSNOVICA = 5557.13 
+#OSNOVICA = 5557.13 
 OSNOVICA =  5679.39   # 2.2% porasta pocevsi od place 01.08.2011. (Zasto ne 2%?)
 STARA_OSNOVICA = OSNOVICA
 OSNOVICA =  5108.84   # Ujedinjenje osnovica javnih sluzbi od 2011.
@@ -83,12 +83,18 @@ MIO = 20   # Mirovinsko osiguranje (15% prvi stup i 5% drugi stup)
 # porez
 OSNOVNI_ODBITAK = 2200  # minimalni neoporezivi iznos za područja
                         # koja NISU od posebne državne skrbi
-STOPA1 = 12 # do 2X osnovnog odbitka
+# Za područja posebne državne skrbi treba staviti (čl. 54)
+#  prva skupina: 3840
+#  druga skupina: 3200
+#  treća skupina: 2400
+
+# Stope oporezivanja (čl. 8)
+STOPA1 = 12 # do 1X osnovnog odbitka
 GRANICA1 = 1 * OSNOVNI_ODBITAK
-STOPA2 = 25 # 2X - 5X
-GRANICA2 = 5 * OSNOVNI_ODBITAK
-STOPA3 = 35 # 5X - 14X
-GRANICA3 = 14 * OSNOVNI_ODBITAK
+STOPA2 = 25 # 1X - 4X
+GRANICA2 = 4 * OSNOVNI_ODBITAK
+STOPA3 = 40 # 4X - 14X
+GRANICA3 = 9 * OSNOVNI_ODBITAK
 HARAC = 0  # harac
 
 SINDIKAT = 1.3
