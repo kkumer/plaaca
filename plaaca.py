@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
 # -------------------------- plaaca ------------------------------------+
@@ -7,6 +7,7 @@
 # obrazovanju i znanosti.                                               |
 #   Krešimir Kumerički (kkumer@phy.hr)                                  |
 #                                                                       |
+# Verzija: 2.1  2015-12-23    Nakon 1.1.2015. (neoprorezivo+razredi)    |
 # Verzija: 2.0  2014-07-22    Nakon ukidanja kolektivnog ugovora        |
 # Verzija: 1.3  2012-03-15    Korekcija poreznih razreda NN 22/12       |
 # Verzija: 1.2  2011-07-18    Update za novu definiciju osnovice        |
@@ -39,13 +40,13 @@ KOEFICIJENT = 2.037   # Linić i Milanović umanjili za 3% 2013.
 #KOEFICIJENT = 2.5   # Redoviti profesor, znanstveni savjetnik (1. izbor)
 #KOEFICI3ENT = 3.05   # Redoviti profesor, znanstveni savjetnik (2. izbor)
 
-STAZ = 20  # godine staža
+STAZ = 21  # godine staža
 
 # Dodatak za znanstveni stupanj:
 DOKTORAT = 0.15  # Doktori u znanstveno-nastavnim zvanjima 
                  # trebaju staviti 0.15. Inače 0.
 
-FAKTOR_ODBITKA = 1.0   # Jedno dijete: 1.5     Troje djece: 3.2
+FAKTOR_ODBITKA = 3.2   # Jedno dijete: 1.5     Troje djece: 3.2
                        # Dvoje djece: 2.2      Četvoro djece: 4.6
                        # Petero djece: 6.5
                        # Uzdržavani supružnik (ili alimentacija):
@@ -77,14 +78,16 @@ OSNOVICA =  5810.03   # 2.3% porasta pocevsi od place 01.08.2012.
 STARA_OSNOVICA = OSNOVICA
 OSNOVICA =  5108.84   # Ujedinjenje osnovica javnih sluzbi od 2011.
 
+PRIJEVOZ = 270.
 
 KOREKCIJA_OSNOVICE = STARA_OSNOVICA/OSNOVICA - 1
 
-DOPRINOSI = 17.3  # Doprinosi na bruto (zdravstvo, ozljede, zaposljavanje etc.)
+DOPRINOSI = 17.2  # Doprinosi na bruto (zdravstvo, ozljede, zaposljavanje etc.)
 MIO = 20   # Mirovinsko osiguranje (15% prvi stup i 5% drugi stup)
 
 # porez
-OSNOVNI_ODBITAK = 2200  # minimalni neoporezivi iznos za područja
+STARI_OSNOVNI_ODBITAK = 2200  # još uvijek se koristi za porezne razrede
+OSNOVNI_ODBITAK = 2600  # minimalni neoporezivi iznos za područja
                         # koja NISU od posebne državne skrbi
 # Za područja posebne državne skrbi treba staviti (čl. 54)
 #  prva skupina: 3840
@@ -93,11 +96,11 @@ OSNOVNI_ODBITAK = 2200  # minimalni neoporezivi iznos za područja
 
 # Stope oporezivanja (čl. 8)
 STOPA1 = 12 # do 1X osnovnog odbitka
-GRANICA1 = 1 * OSNOVNI_ODBITAK
-STOPA2 = 25 # 1X - 4X
-GRANICA2 = 4 * OSNOVNI_ODBITAK
-STOPA3 = 40 # 4X - 14X
-GRANICA3 = 9 * OSNOVNI_ODBITAK
+GRANICA1 = 1 * STARI_OSNOVNI_ODBITAK
+STOPA2 = 25 # 1X - 6X
+GRANICA2 = 6 * STARI_OSNOVNI_ODBITAK
+STOPA3 = 40 # 6X - beskonačno
+GRANICA3 = 1000 * OSNOVNI_ODBITAK
 HARAC = 0  # harac
 
 SINDIKAT = 1.3
@@ -196,17 +199,19 @@ NETO = NETOPRIJE * (1.- HARAC/100.0)
 print fsr.format('Neto', NETO)
 
 #print "Harac = %.2f"  % (NETOPRIJE * HARAC/100.)
+print fsr.format('Prijevoz', PRIJEVOZ)
 
 if CLAN_SINDIKATA:
     SINDIKAT_IZNOS = NETO*SINDIKAT/100.0
     print fsr.format('Obustave', SINDIKAT_IZNOS)
     NETO = NETO - SINDIKAT_IZNOS
 
+NETO = NETO + PRIJEVOZ
 print lln
 print fsr.format('Iznos za isplatu', NETO)
 print lln
 
 print fsr.format('Doprinosi na placu', OSTVARENO*DOPRINOSI/100.)
-print fsr.format('Ukupan trosak place', OSTVARENO*(1.+DOPRINOSI/100.))
+print fsr.format('Ukupan trosak place', OSTVARENO*(1.+DOPRINOSI/100.)+PRIJEVOZ)
 print ln
 
