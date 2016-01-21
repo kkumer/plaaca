@@ -36,9 +36,9 @@
 #KOEFICIJENT = 1.65   # Viši asistent, viši predavač, viši knjižničar
 #KOEFICIJENT = 1.9   # Docent, znanstveni suradnik, knjižničarski savjetnik
 KOEFICIJENT = 2.1   # Izvanredni profesor, viši znanstveni suradnik
-KOEFICIJENT = 2.037   # Linić i Milanović umanjili za 3% 2013.
 #KOEFICIJENT = 2.5   # Redoviti profesor, znanstveni savjetnik (1. izbor)
 #KOEFICI3ENT = 3.05   # Redoviti profesor, znanstveni savjetnik (2. izbor)
+KOEFICIJENT = KOEFICIJENT * 0.97   # Linić i Milanović umanjili za 3% 2013.
 
 STAZ = 21  # godine staža
 
