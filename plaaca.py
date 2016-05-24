@@ -5,7 +5,7 @@
 #                                                                       |
 # Neslužbeni izračun plaće za zaposlenike u osnovnom školstvu, visokom  |
 # obrazovanju i znanosti.                                               |
-#   Krešimir Kumerički (kkumer@phy.hr)                                  |
+#   Krešimir Kumerički (kkumer@gmail.com)                                  |
 #                                                                       |
 # Verzija: 2.1  2015-12-23    Nakon 1.1.2015. (neoprorezivo+razredi)    |
 # Verzija: 2.0  2014-07-22    Nakon ukidanja kolektivnog ugovora        |
@@ -40,7 +40,7 @@ KOEFICIJENT = 2.037   # Linić i Milanović umanjili za 3% 2013.
 #KOEFICIJENT = 2.5   # Redoviti profesor, znanstveni savjetnik (1. izbor)
 #KOEFICI3ENT = 3.05   # Redoviti profesor, znanstveni savjetnik (2. izbor)
 
-STAZ = 21  # godine staža
+STAZ = 22  # godine staža
 
 # Dodatak za znanstveni stupanj:
 DOKTORAT = 0.15  # Doktori u znanstveno-nastavnim zvanjima 
