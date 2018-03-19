@@ -77,6 +77,7 @@ OSNOVICA =  5679.39   # 2.2% porasta pocevsi od place 01.08.2011. (Zasto ne 2%?)
 OSNOVICA =  5810.03   # 2.3% porasta pocevsi od place 01.08.2012.
 OSNOVICA =  5108.84   # Ujedinjenje osnovica javnih sluzbi od 2011.
 OSNOVICA =  5211.02   # Nova osnovica 1.1.2017. (odluka Vlade RH)
+OSNOVICA =  5421.54   # Nova osnovica oko kraja 2017.
 
 PRIJEVOZ = 270.
 
