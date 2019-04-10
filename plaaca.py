@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 # -------------------------- plaaca ------------------------------------+
@@ -52,7 +52,7 @@ FAKTOR_ODBITKA = 0.7   # Jedno dijete: 0.7     Troje djece: 3.1
                        # Uzdržavani supružnik (ili alimentacija):
                        #  +0.7 na gornje brojke 
 
-CLAN_SINDIKATA = 0 # 1=član  0=nečlan
+CLAN_SINDIKATA = 1 # 1=član  0=nečlan
 
 # Prirez:
 # Zagreb = 18, Dubrovnik = 15, Varaždin = 10, Karlovac = 12, Osijek = 13,
@@ -80,7 +80,7 @@ OSNOVICA =  5211.02   # Nova osnovica 1.1.2017. (odluka Vlade RH)
 OSNOVICA =  5421.54   # Nova osnovica oko kraja 2017.
 OSNOVICA =  5584.19   # Nova osnovica od 2019. (novi kolektivni)
 
-PRIJEVOZ = 270.
+PRIJEVOZ = 290.
 
 DOPRINOSI = 17.2  # Doprinosi na bruto (zdravstvo, ozljede, zaposljavanje etc.)
 MIO = 20   # Mirovinsko osiguranje (15% prvi stup i 5% drugi stup)
@@ -114,43 +114,43 @@ isr =  '{:>35s} = {:9d}'
 ln  =  50*'-'
 lln  =  50*'='
 
-print ln
-print fsr.format('Osnovica', OSNOVICA)
-print f3sr.format('Koeficijent', KOEFICIJENT)
-print isr.format('Staz (god.)', STAZ)
+print(ln)
+print(fsr.format('Osnovica', OSNOVICA))
+print(f3sr.format('Koeficijent', KOEFICIJENT))
+print(isr.format('Staz (god.)', STAZ))
 
 REDOVNIRAD = KOEFICIJENT * OSNOVICA
 MINULIRAD = REDOVNIRAD * STAZ * 0.5/100
 # Ako se se nakon 25/31 dana povecava staz:
 # MINULIRAD = REDOVNIRAD * (STAZ*25/31.+(STAZ+1)*6/31.) * 0.5/100
-print fsr.format('Redovni rad (+neradni dani i g.o)', REDOVNIRAD)
-print fsr.format('Minuli rad', MINULIRAD)
+print(fsr.format('Redovni rad (+neradni dani i g.o)', REDOVNIRAD))
+print(fsr.format('Minuli rad', MINULIRAD))
 
 # Do 2014. je bilo:
 DRKOEF = BODOVI * DOKTORAT
 DR_UVECANJE = DRKOEF * OSNOVICA
-print fsr.format('Dodatak za doktorat', DR_UVECANJE)
+print(fsr.format('Dodatak za doktorat', DR_UVECANJE))
 
 # Uvećanje po Sporazumu o dodacima iz studenog 2006.
 KOR_UVECANJE =  BODOVI * OSNOVICA * 13.725/100
-print fsr.format('Dodatak po sporazumu', KOR_UVECANJE)
+print(fsr.format('Dodatak po sporazumu', KOR_UVECANJE))
 
 
 OSTVARENO = REDOVNIRAD + MINULIRAD + DR_UVECANJE + KOR_UVECANJE 
 
-print fsr.format('Bruto', OSTVARENO)
-print ln
-print fsr.format('Mirovinsko', OSTVARENO*MIO/100.)
+print(fsr.format('Bruto', OSTVARENO))
+print(ln)
+print(fsr.format('Mirovinsko', OSTVARENO*MIO/100.))
 DOHODAK = OSTVARENO * (1 - MIO/100.0)
-print fsr.format('Dohodak', DOHODAK)
+print(fsr.format('Dohodak', DOHODAK))
 
 
 NEOPOREZIVO = OSNOVNI_ODBITAK + OSNOVICA_ZA_ODBITAK * FAKTOR_ODBITKA
 
 DOH = DOHODAK - NEOPOREZIVO
 
-print ln
-print fsr.format('Neoporezivi dio', NEOPOREZIVO)
+print(ln)
+print(fsr.format('Neoporezivi dio', NEOPOREZIVO))
 if DOH < 0:
     sys.stderr.write("Cijela plaća je neoporeziva!!\n")
     POREZ = 0
@@ -159,42 +159,42 @@ else:
     POREZ3 = 0
     if DOH < GRANICA1:
         POREZ1 = DOH * STOPA1/100.0
-        print psr.format('Porez', STOPA1, POREZ1)
+        print(psr.format('Porez', STOPA1, POREZ1))
     else:
         POREZ1 = GRANICA1 * STOPA1/100.0
-        print psr.format('Porez', STOPA1, POREZ1)
+        print(psr.format('Porez', STOPA1, POREZ1))
         POREZ2 = (DOH - GRANICA1) * STOPA2/100.0
-        print psr.format('Porez', STOPA2, POREZ2)
+        print(psr.format('Porez', STOPA2, POREZ2))
 
     POREZ = POREZ1 + POREZ2
 
 
 PRIREZ_IZNOS = POREZ * PRIREZ/100.0
 
-print psr.format('Prirez', PRIREZ, PRIREZ_IZNOS)
+print(psr.format('Prirez', PRIREZ, PRIREZ_IZNOS))
 
 POREZ += PRIREZ_IZNOS
 
-print fsr.format('Ukupni porez i prirez', POREZ)
-print ln
+print(fsr.format('Ukupni porez i prirez', POREZ))
+print(ln)
 
 NETO = DOHODAK - POREZ
 
-print fsr.format('Neto', NETO)
+print(fsr.format('Neto', NETO))
 
-print fsr.format('Prijevoz', PRIJEVOZ)
+print(fsr.format('Prijevoz', PRIJEVOZ))
 
 if CLAN_SINDIKATA:
     SINDIKAT_IZNOS = NETO*SINDIKAT/100.0
-    print fsr.format('Obustave', SINDIKAT_IZNOS)
+    print(fsr.format('Obustave', SINDIKAT_IZNOS))
     NETO = NETO - SINDIKAT_IZNOS
 
 NETO = NETO + PRIJEVOZ
-print lln
-print fsr.format('Iznos za isplatu', NETO)
-print lln
+print(lln)
+print(fsr.format('Iznos za isplatu', NETO))
+print(lln)
 
-print fsr.format('Doprinosi na placu', OSTVARENO*DOPRINOSI/100.)
-print fsr.format('Ukupan trosak place', OSTVARENO*(1.+DOPRINOSI/100.)+PRIJEVOZ)
-print ln
+print(fsr.format('Doprinosi na placu', OSTVARENO*DOPRINOSI/100.))
+print(fsr.format('Ukupan trosak place', OSTVARENO*(1.+DOPRINOSI/100.)+PRIJEVOZ))
+print(ln)
 
