@@ -5,9 +5,10 @@
 #                                                                       |
 # Neslužbeni izračun plaće za zaposlenike u osnovnom školstvu, visokom  |
 # obrazovanju i znanosti.                                               |
-#   Krešimir Kumerički (kkumer@gmail.com)                                  |
+#   Krešimir Kumerički (kkumer@gmail.com)                               |
 #                                                                       |
-# cf. http://www.isplate.info/kalkulator-place-2017.aspx
+# cf. http://www.isplate.info/kalkulator-place-2017.aspx                |
+# Verzija: 2.6  2019-11-18    Nakon jeseni 2019. (doprinosi)            |
 # Verzija: 2.5  2017-02-01    Nakon 1.1.2017. (neoprorezivo+razredi)    |
 # Verzija: 2.1  2015-12-23    Nakon 1.1.2015. (neoprorezivo+razredi)    |
 # Verzija: 2.0  2014-07-22    Nakon ukidanja kolektivnog ugovora        |
@@ -36,18 +37,18 @@
 #KOEFICIJENT = 1.45   # Asistent
 #KOEFICIJENT = 1.65   # Viši asistent, viši predavač, viši knjižničar
 #KOEFICIJENT = 1.9   # Docent, znanstveni suradnik, knjižničarski savjetnik
-KOEFICIJENT = 2.1   # Izvanredni profesor, viši znanstveni suradnik
-#KOEFICIJENT = 2.5   # Redoviti profesor, znanstveni savjetnik (1. izbor)
+#KOEFICIJENT = 2.1   # Izvanredni profesor, viši znanstveni suradnik
+KOEFICIJENT = 2.5   # Redoviti profesor, znanstveni savjetnik (1. izbor)
 #KOEFICIJENT = 3.05   # Redoviti profesor, znanstveni savjetnik (2. izbor)
 KOEFICIJENT = KOEFICIJENT * 0.97   # Linić i Milanović umanjili za 3% 2013.
 
-STAZ = 20  # godine staža
+STAZ = 25  # godine staža
 
 # Dodatak za znanstveni stupanj:
 DOKTORAT = 0.15  # Doktori u znanstveno-nastavnim zvanjima 
                  # trebaju staviti 0.15. Inače 0.
 
-FAKTOR_ODBITKA = 0.7   # Jedno dijete: 0.7     Troje djece: 3.1
+FAKTOR_ODBITKA = 3.1   # Jedno dijete: 0.7     Troje djece: 3.1
                        # Dvoje djece: 1.7      Četvoro djece: 5.0
                        # Uzdržavani supružnik (ili alimentacija):
                        #  +0.7 na gornje brojke 
@@ -79,10 +80,11 @@ OSNOVICA =  5108.84   # Ujedinjenje osnovica javnih sluzbi od 2011.
 OSNOVICA =  5211.02   # Nova osnovica 1.1.2017. (odluka Vlade RH)
 OSNOVICA =  5421.54   # Nova osnovica oko kraja 2017.
 OSNOVICA =  5584.19   # Nova osnovica od 2019. (novi kolektivni)
+OSNOVICA =  5695.87   # Nova osnovica od jeseni (?) 2019. 
 
 PRIJEVOZ = 290.
 
-DOPRINOSI = 17.2  # Doprinosi na bruto (zdravstvo, ozljede, zaposljavanje etc.)
+DOPRINOSI = 16.5  # Doprinosi na bruto (zdravstvo, ozljede, zaposljavanje etc.)
 MIO = 20   # Mirovinsko osiguranje (15% prvi stup i 5% drugi stup)
 
 # porez
