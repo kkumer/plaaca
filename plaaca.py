@@ -42,7 +42,7 @@ KOEFICIJENT = 2.5   # Redoviti profesor, znanstveni savjetnik (1. izbor)
 #KOEFICIJENT = 3.05   # Redoviti profesor, znanstveni savjetnik (2. izbor)
 KOEFICIJENT = KOEFICIJENT * 0.97   # Linić i Milanović umanjili za 3% 2013.
 
-STAZ = 25  # godine staža
+STAZ = 26  # godine staža
 
 # Dodatak za znanstveni stupanj:
 DOKTORAT = 0.15  # Doktori u znanstveno-nastavnim zvanjima 
@@ -81,6 +81,7 @@ OSNOVICA =  5211.02   # Nova osnovica 1.1.2017. (odluka Vlade RH)
 OSNOVICA =  5421.54   # Nova osnovica oko kraja 2017.
 OSNOVICA =  5584.19   # Nova osnovica od 2019. (novi kolektivni)
 OSNOVICA =  5695.87   # Nova osnovica od jeseni (?) 2019. 
+OSNOVICA =  5809.79   # Nova osnovica od kraja 2019.
 
 PRIJEVOZ = 290.
 
@@ -89,7 +90,7 @@ MIO = 20   # Mirovinsko osiguranje (15% prvi stup i 5% drugi stup)
 
 # porez
 OSNOVICA_ZA_ODBITAK = 2500
-OSNOVNI_ODBITAK = 3800  # minimalni neoporezivi iznos za područja
+OSNOVNI_ODBITAK = 4000  # minimalni neoporezivi iznos za područja
                         # koja NISU od posebne državne skrbi
 # FIXME: da li se ovo mijenjalo 2017?
 # Za područja posebne državne skrbi treba staviti (čl. 54)
