@@ -27,20 +27,37 @@
                   
 # Uredba o koeficijentima 
 #  ima PDF na http://www.nsz.hr/pravo-i-propisi/dokumenti/
-# Namještenici u javnim službama
-#KOEFICIJENT = 0.62   # Radna mjesta IV vrste
-#KOEFICIJENT = 0.80   # Radna mjesta III vrste, daktilograf
-#KOEFICIJENT = 0.90   # Radna mjesta II vrste
-# Radna mjesta I vrste u visokim učilištima i javnim institutima
-#KOEFICIJENT = 1.25   # Predavač, dipl. knjižničar, stručni suradnik II
-#KOEFICIJENT = 1.30   # Stručni suradnik I
-#KOEFICIJENT = 1.45   # Asistent
-#KOEFICIJENT = 1.65   # Viši asistent, viši predavač, viši knjižničar
-#KOEFICIJENT = 1.9   # Docent, znanstveni suradnik, knjižničarski savjetnik
-#KOEFICIJENT = 2.1   # Izvanredni profesor, viši znanstveni suradnik
-KOEFICIJENT = 2.5   # Redoviti profesor, znanstveni savjetnik (1. izbor)
-#KOEFICIJENT = 3.05   # Redoviti profesor, znanstveni savjetnik (2. izbor)
-KOEFICIJENT = KOEFICIJENT * 0.97   # Linić i Milanović umanjili za 3% 2013.
+# Namještenici u javnim službama (visoka učilišta i javni instituti)
+#  dolje uvijek vrijedi standardna korespondencija docent=zn. suradnik itd.
+#### Položaji I. vrste
+#KOEFICIJENT = 3.395   # Dekan iznad 500 zaposlenika
+#KOEFICIJENT = 3.201   # Prodekan iznad 500 zaposlenika
+#KOEFICIJENT = 3.104   # Pročelnik odsjeka, predstojnik zavoda (20+), red. prof. trajno
+#KOEFICIJENT = 2.716   # Pročelnik odsjeka, predstojnik zavoda (20+), red. prof. 
+#KOEFICIJENT = 2.328   # Pročelnik odsjeka, predstojnik zavoda (20+), izv. prof. 
+#KOEFICIJENT = 3.055   # Pročelnik odsjeka, predstojnik zavoda (<20), red. prof. trajno
+#KOEFICIJENT = 2.619   # Pročelnik odsjeka, predstojnik zavoda (<20), red. prof. 
+#KOEFICIJENT = 2.231   # Pročelnik odsjeka, predstojnik zavoda (<20), izv. prof. 
+#KOEFICIJENT = 3.007   # Voditelj laborat, šef katedre, red. prof. trajno
+#KOEFICIJENT = 2.570   # Voditelj laborat, šef katedre, red. prof.
+#KOEFICIJENT = 2.182   # Voditelj laborat, šef katedre, izv. prof.
+#### Radna mjesta I. vrste u visokim učilištima i javnim institutima
+#KOEFICIJENT = 2.958   # Red. prof. / zn. savj. - trajno zvanje
+KOEFICIJENT = 2.425   # Red. prof. / zn. savj.
+#KOEFICIJENT = 2.037   # Izv. prof. / v. zn. sur.
+#KOEFICIJENT = 1.843   # Doc. / zn. sur. / prof. visoke škole
+#KOEFICIJENT = 1.843   # Knjižničarski savjetnik
+#KOEFICIJENT = 1.6     # Poslijedoktorand, viši predavač, viši knjižničar, stručni savj.
+#KOEFICIJENT = 1.406   # Asistent, dipl. knjižničar, viši stručni surad.
+#KOEFICIJENT = 1.261   # Stručni surad. u sustavu znanosti
+#KOEFICIJENT = 1.358   # Predavač
+#### Radna mjesta II. vrste u visokim učilištima i javnim institutima
+#KOEFICIJENT = 1.067   # Viši tehničar, viši laborant
+#KOEFICIJENT = 1.018   # Knjižničar
+#### Radna mjesta III. vrste u visokim učilištima i javnim institutima
+#KOEFICIJENT = 0.970   # Laborant, tehnički suradnik
+#KOEFICIJENT = 0.873   # Pomoćni knjižničar
+
 
 STAZ = 26  # godine staža
 
@@ -99,14 +116,17 @@ OSNOVNI_ODBITAK = 4000  # minimalni neoporezivi iznos za područja
 #  treća skupina: 2400
 
 # Stope oporezivanja
-STOPA1 = 24 
+#STOPA1 = 24 
+STOPA1 = 20 # nakon 1.1.2021.
 GRANICA1 = 17500.
-STOPA2 = 36 
+#STOPA2 = 36 
+STOPA2 = 30 # nakon 1.1.2021
 
 SINDIKAT = 1.3
 
 
-import sys, math
+import math
+import sys
 
 BODOVI = KOEFICIJENT * (1 + STAZ*0.5/100)
 
