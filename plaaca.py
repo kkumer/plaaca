@@ -6,6 +6,7 @@
 |                                                                       |
 |                                                                       |
 | cf. http://www.isplate.info/kalkulator-place-2017.aspx                |
+| Verzija: 2.8  2022-07-25    Nakon svibnja 2022. (nova osnovica)       |
 | Verzija: 2.7  2021-01-14    Nakon 1.1. 2021. (nove stope)             |
 | Verzija: 2.6  2019-11-18    Nakon jeseni 2019. (doprinosi)            |
 | Verzija: 2.5  2017-02-01    Nakon 1.1.2017. (neoprorezivo+razredi)    |
@@ -63,7 +64,7 @@ KOEFICIJENT = 2.716   # Pročelnik odsjeka, predstojnik zavoda (20+), red. prof.
 # KOEFICIJENT = 0.873   # Pomoćni knjižničar
 
 
-STAZ = 27  # godine staža
+STAZ = 28  # godine staža
 
 # Dodatak za znanstveni stupanj:
 # Doktori u znanstveno-nastavnim zvanjima trebaju staviti 0.15. Inače 0.
@@ -107,7 +108,8 @@ PRIREZ = 18
 # OSNOVICA =  5584.19   # Nova osnovica od 2019. (novi kolektivni)
 # OSNOVICA =  5695.87   # Nova osnovica od jeseni (?) 2019.
 # OSNOVICA =  5809.79   # Nova osnovica od kraja 2019.
-OSNOVICA = 6044.51   # Nova osnovica od 1. 1. 2021.
+# OSNOVICA = 6044.51   # Nova osnovica od 1. 1. 2021.
+OSNOVICA = 6286.29  # Nova osnovica od svibnja 2022.
 
 PRIJEVOZ = 290.
 
