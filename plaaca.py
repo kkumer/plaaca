@@ -6,6 +6,7 @@
 |                                                                       |
 |                                                                       |
 | cf. http://www.isplate.info/kalkulator-place-2017.aspx                |
+| Verzija: 2.9  2023-01-11    Prelazak na Euro 1. 1. 2023.                          |
 | Verzija: 2.8  2022-07-25    Nakon svibnja 2022. (nova osnovica)       |
 | Verzija: 2.7  2021-01-14    Nakon 1.1. 2021. (nove stope)             |
 | Verzija: 2.6  2019-11-18    Nakon jeseni 2019. (doprinosi)            |
@@ -64,7 +65,7 @@ KOEFICIJENT = 2.425   # Red. prof. / zn. savj.
 # KOEFICIJENT = 0.873   # Pomoćni knjižničar
 
 
-STAZ = 28  # godine staža
+STAZ = 29  # godine staža
 
 # Dodatak za znanstveni stupanj:
 # Doktori u znanstveno-nastavnim zvanjima trebaju staviti 0.15. Inače 0.
@@ -114,8 +115,9 @@ NN122 = False
 # OSNOVICA = 6044.51   # Nova osnovica od 1. 1. 2021.
 # OSNOVICA = 6286.29  # Nova osnovica od svibnja 2022.
 OSNOVICA = 6663.47  # Nova osnovica od prosinca 2022.
+OSNOVICA = 884.394  # Prelazak na Euro od 1. 1. 2023.
 
-PRIJEVOZ = 290.
+PRIJEVOZ = 34.99
 
 DOPRINOSI = 16.5  # Doprinosi na bruto (zdravstvo, ozljede, zaposljavanje etc.)
 MIO = 20   # Mirovinsko osiguranje (15% prvi stup i 5% drugi stup)
@@ -123,7 +125,7 @@ MIO = 20   # Mirovinsko osiguranje (15% prvi stup i 5% drugi stup)
 # ------ POREZ ------------
 
 # Zakon o porezu na dohodak Čl. 14
-OSNOVICA_ZA_ODBITAK = 2500
+OSNOVICA_ZA_ODBITAK = 331.81
 
 # minimalni neoporezivi iznos za područja
 # koja NISU od posebne državne skrbi:
@@ -132,7 +134,7 @@ OSNOVNI_ODBITAK = 1.6 * OSNOVICA_ZA_ODBITAK
 
 # Stope oporezivanja
 STOPA1 = 20
-GRANICA1 = 17500.
+GRANICA1 = 2322.65
 STOPA2 = 30
 
 SINDIKAT = 1.3
