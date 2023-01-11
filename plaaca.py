@@ -38,7 +38,7 @@
 # KOEFICIJENT = 3.395   # Dekan iznad 500 zaposlenika
 # KOEFICIJENT = 3.201   # Prodekan iznad 500 zaposlenika
 # KOEFICIJENT = 3.104   # Pročelnik odsjeka, predstojnik zavoda (20+), red. prof. trajno
-KOEFICIJENT = 2.716   # Pročelnik odsjeka, predstojnik zavoda (20+), red. prof.
+# KOEFICIJENT = 2.716   # Pročelnik odsjeka, predstojnik zavoda (20+), red. prof.
 # KOEFICIJENT = 2.328   # Pročelnik odsjeka, predstojnik zavoda (20+), izv. prof.
 # KOEFICIJENT = 3.055   # Pročelnik odsjeka, predstojnik zavoda (<20), red. prof. trajno
 # KOEFICIJENT = 2.619   # Pročelnik odsjeka, predstojnik zavoda (<20), red. prof.
@@ -48,7 +48,7 @@ KOEFICIJENT = 2.716   # Pročelnik odsjeka, predstojnik zavoda (20+), red. prof.
 # KOEFICIJENT = 2.182   # Voditelj laborat, šef katedre, izv. prof.
 # ### Radna mjesta I. vrste u visokim učilištima i javnim institutima
 # KOEFICIJENT = 2.958   # Red. prof. / zn. savj. - trajno zvanje
-# KOEFICIJENT = 2.425   # Red. prof. / zn. savj.
+KOEFICIJENT = 2.425   # Red. prof. / zn. savj.
 # KOEFICIJENT = 2.037   # Izv. prof. / v. zn. sur.
 # KOEFICIJENT = 1.843   # Doc. / zn. sur. / prof. visoke škole
 # KOEFICIJENT = 1.843   # Knjižničarski savjetnik
@@ -88,6 +88,9 @@ CLAN_SINDIKATA = 1  # 1=član  0=nečlan
 
 PRIREZ = 18
 
+# Ima pravo na uvećanje po Sporazumu iz NN122:
+NN122 = False
+
 # ------------  GLOBALNI PARAMETRI   ---------------------
 
 # OSNOVICA = 4232.43   # za 2003.
@@ -109,7 +112,8 @@ PRIREZ = 18
 # OSNOVICA =  5695.87   # Nova osnovica od jeseni (?) 2019.
 # OSNOVICA =  5809.79   # Nova osnovica od kraja 2019.
 # OSNOVICA = 6044.51   # Nova osnovica od 1. 1. 2021.
-OSNOVICA = 6286.29  # Nova osnovica od svibnja 2022.
+# OSNOVICA = 6286.29  # Nova osnovica od svibnja 2022.
+OSNOVICA = 6663.47  # Nova osnovica od prosinca 2022.
 
 PRIJEVOZ = 290.
 
@@ -167,8 +171,15 @@ print(fsr.format('Dodatak za doktorat', DR_UVECANJE))
 KOR_UVECANJE = BODOVI * OSNOVICA * 13.725/100
 print(fsr.format('Dodatak po sporazumu', KOR_UVECANJE))
 
+# Uvećanje po Sporazumu NN122/2019
+if NN122:
+    KOR_UVECANJE_NN122 = BODOVI * OSNOVICA * 6.11/100
+    print(fsr.format('Dodatak po sporazumu NN122', KOR_UVECANJE_NN122))
+else:
+    KOR_UVECANJE_NN122 = 0
 
-OSTVARENO = REDOVNIRAD + MINULIRAD + DR_UVECANJE + KOR_UVECANJE
+
+OSTVARENO = REDOVNIRAD + MINULIRAD + DR_UVECANJE + KOR_UVECANJE + KOR_UVECANJE_NN122
 
 print(fsr.format('Bruto', OSTVARENO))
 print(ln)
