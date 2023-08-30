@@ -116,8 +116,9 @@ NN122 = False
 # OSNOVICA = 6286.29  # Nova osnovica od svibnja 2022.
 OSNOVICA = 6663.47  # Nova osnovica od prosinca 2022.
 OSNOVICA = 884.394  # Prelazak na Euro od 1. 1. 2023.
+OSNOVICA = 902.08   # Nova osnovica od travnja 2023.
 
-PRIJEVOZ = 34.99
+PRIJEVOZ = 38.49
 
 DOPRINOSI = 16.5  # Doprinosi na bruto (zdravstvo, ozljede, zaposljavanje etc.)
 MIO = 20   # Mirovinsko osiguranje (15% prvi stup i 5% drugi stup)
