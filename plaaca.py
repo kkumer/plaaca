@@ -117,6 +117,7 @@ NN122 = False
 OSNOVICA = 6663.47  # Nova osnovica od prosinca 2022.
 OSNOVICA = 884.394  # Prelazak na Euro od 1. 1. 2023.
 OSNOVICA = 902.08   # Nova osnovica od travnja 2023.
+OSNOVICA = 947.18   # Nova osnovica od listopada 2023.
 
 PRIJEVOZ = 38.49
 
