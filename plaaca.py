@@ -48,8 +48,8 @@
 # KOEFICIJENT = 2.570   # Voditelj laborat, šef katedre, red. prof.
 # KOEFICIJENT = 2.182   # Voditelj laborat, šef katedre, izv. prof.
 # ### Radna mjesta I. vrste u visokim učilištima i javnim institutima
-# KOEFICIJENT = 2.958   # Red. prof. / zn. savj. - trajno zvanje
-KOEFICIJENT = 2.425   # Red. prof. / zn. savj.
+KOEFICIJENT = 2.958   # Red. prof. / zn. savj. - trajno zvanje
+# KOEFICIJENT = 2.425   # Red. prof. / zn. savj.
 # KOEFICIJENT = 2.037   # Izv. prof. / v. zn. sur.
 # KOEFICIJENT = 1.843   # Doc. / zn. sur. / prof. visoke škole
 # KOEFICIJENT = 1.843   # Knjižničarski savjetnik
@@ -65,79 +65,46 @@ KOEFICIJENT = 2.425   # Red. prof. / zn. savj.
 # KOEFICIJENT = 0.873   # Pomoćni knjižničar
 
 
-STAZ = 29  # godine staža
+STAZ = 30  # godine staža
 
 # Dodatak za znanstveni stupanj:
 # Doktori u znanstveno-nastavnim zvanjima trebaju staviti 0.15. Inače 0.
 
 DOKTORAT = 0.15
 
-
 # Faktor odbitka:
-# Jedno dijete: 0.7     Troje djece: 3.1
-# Dvoje djece: 1.7      Četvoro djece: 5.0
-# Uzdržavani supružnik (ili alimentacija):  +0.7 na gornje brojke
+# Osnovni: 1.0
+# Jedno dijete: 1.5     Dvoje djece: 2.2     Troje djece: 3.2
+# Uzdržavani supružnik (ili alimentacija):  +0.5 na gornje brojke
+# Za dalje vidi https://www.isplate.info/Osobni-odbitak-2024.aspx
 
-FAKTOR_ODBITKA = 3.1
+FAKTOR_ODBITKA = 3.2
 
 CLAN_SINDIKATA = 1  # 1=član  0=nečlan
 
-# Prirez:
-# Zagreb = 18, Dubrovnik = 15, Varaždin = 10, Karlovac = 12, Osijek = 13,
-# Samobor, Stubičke Toplice = 0 ...
-# Pogledajte stopu prireza za svoje prebivalište
+# -- Porezni parametri  --
 
-PRIREZ = 18
+# Za Zagreb i druga područja koja NISU od posebne državne skrbi:
+OSNOVNI_ODBITAK = 560
+
+# Stope oporezivanja za Zagreb
+# Za ostale gradove vidi npr. https://isplate.info/porez-na-dohodak-porezne-stope.aspx
+STOPA1 = 23.6
+GRANICA1 = 4200  # Nisam siguran ni u iznos ni koji je to iznos
+STOPA2 = 35.4
 
 # Ima pravo na uvećanje po Sporazumu iz NN122:
 NN122 = False
 
 # ------------  GLOBALNI PARAMETRI   ---------------------
 
-# OSNOVICA = 4232.43   # za 2003.
-# OSNOVICA = 4414.42   # za 2004. prema novom Kolektivnom ugovoru
-# OSNOVICA = 4546.85   # pise na mom obračunskom listiću za 10/2006
-# OSNOVICA = 4819.66   # 6% porasta u 01/2007 (nakon strajka)
-# OSNOVICA = 4916.05   # 2% porasta pocevsi od place 08/2007
-# OSNOVICA = 5211.01   # 6% porasta pocevsi od place 12/2007
-# OSNOVICA = 5320.45    # 2% porasta pocevsi od place 01.08.2008.
-# OSNOVICA = 5639.67   # 6% porasta pocevsi od place 01.08.2009. (OCEKIVANO)
-# OSNOVICA = 5320.45   # famoznih -6% zbog krize, prema sporazumu sa Sindikatima
-# OSNOVICA = 5557.13
-# OSNOVICA =  5679.39   # 2.2% porasta pocevsi od place 01.08.2011. (Zasto ne 2%?)
-# OSNOVICA =  5810.03   # 2.3% porasta pocevsi od place 01.08.2012.
-# OSNOVICA =  5108.84   # Ujedinjenje osnovica javnih sluzbi od 2011.
-# OSNOVICA =  5211.02   # Nova osnovica 1.1.2017. (odluka Vlade RH)
-# OSNOVICA =  5421.54   # Nova osnovica oko kraja 2017.
-# OSNOVICA =  5584.19   # Nova osnovica od 2019. (novi kolektivni)
-# OSNOVICA =  5695.87   # Nova osnovica od jeseni (?) 2019.
-# OSNOVICA =  5809.79   # Nova osnovica od kraja 2019.
-# OSNOVICA = 6044.51   # Nova osnovica od 1. 1. 2021.
-# OSNOVICA = 6286.29  # Nova osnovica od svibnja 2022.
-OSNOVICA = 6663.47  # Nova osnovica od prosinca 2022.
-OSNOVICA = 884.394  # Prelazak na Euro od 1. 1. 2023.
-OSNOVICA = 902.08   # Nova osnovica od travnja 2023.
-OSNOVICA = 947.18   # Nova osnovica od listopada 2023.
+OSNOVICA = 947.18   # od listopada 2023.
 
 PRIJEVOZ = 38.49
 
 DOPRINOSI = 16.5  # Doprinosi na bruto (zdravstvo, ozljede, zaposljavanje etc.)
 MIO = 20   # Mirovinsko osiguranje (15% prvi stup i 5% drugi stup)
 
-# ------ POREZ ------------
-
-# Zakon o porezu na dohodak Čl. 14
-OSNOVICA_ZA_ODBITAK = 331.81
-
-# minimalni neoporezivi iznos za područja
-# koja NISU od posebne državne skrbi:
-OSNOVNI_ODBITAK = 1.6 * OSNOVICA_ZA_ODBITAK
-
-
-# Stope oporezivanja
-STOPA1 = 20
-GRANICA1 = 2322.65
-STOPA2 = 30
 
 SINDIKAT = 1.3
 
@@ -149,7 +116,7 @@ BODOVI = KOEFICIJENT * (1 + STAZ*0.5/100)
 
 fsr = '{:>35s} = {:9.2f}'
 f3sr = '{:>35s} = {:9.3f}'
-psr = '{:>28s} ({:d} %) = {:9.2f}'
+psr = '{:>26s} ({:2.1f} %) = {:9.2f}'
 isr = '{:>35s} = {:9d}'
 ln = 50*'-'
 lln = 50*'='
@@ -192,7 +159,7 @@ DOHODAK = OSTVARENO * (1 - MIO/100.0)
 print(fsr.format('Dohodak', DOHODAK))
 
 
-NEOPOREZIVO = OSNOVNI_ODBITAK + OSNOVICA_ZA_ODBITAK * FAKTOR_ODBITKA
+NEOPOREZIVO = OSNOVNI_ODBITAK * FAKTOR_ODBITKA
 
 DOH = DOHODAK - NEOPOREZIVO
 
@@ -215,12 +182,6 @@ else:
 
     POREZ = POREZ1 + POREZ2
 
-
-PRIREZ_IZNOS = POREZ * PRIREZ/100.0
-
-print(psr.format('Prirez', PRIREZ, PRIREZ_IZNOS))
-
-POREZ += PRIREZ_IZNOS
 
 print(fsr.format('Ukupni porez i prirez', POREZ))
 print(ln)
