@@ -6,7 +6,9 @@
 |                                                                       |
 |                                                                       |
 | cf. http://www.isplate.info/kalkulator-place-2017.aspx                |
-| Verzija: 2.9  2023-01-11    Prelazak na Euro 1. 1. 2023.                          |
+| cf. https://www.nsz.hr/kalkulator-place/                              |
+| Verzija: 3.0  2024-03-08    Novi sustav koeficijenata                 |           |
+| Verzija: 2.9  2023-01-11    Prelazak na Euro 1. 1. 2023.              |           |
 | Verzija: 2.8  2022-07-25    Nakon svibnja 2022. (nova osnovica)       |
 | Verzija: 2.7  2021-01-14    Nakon 1.1. 2021. (nove stope)             |
 | Verzija: 2.6  2019-11-18    Nakon jeseni 2019. (doprinosi)            |
@@ -35,42 +37,21 @@
 #  ima PDF na http://www.nsz.hr/pravo-i-propisi/dokumenti/
 # Namještenici u javnim službama (visoka učilišta i javni instituti)
 #  dolje uvijek vrijedi standardna korespondencija docent=zn. suradnik itd.
-# ### Položaji I. vrste
-# KOEFICIJENT = 3.395   # Dekan iznad 500 zaposlenika
-# KOEFICIJENT = 3.201   # Prodekan iznad 500 zaposlenika
-# KOEFICIJENT = 3.104   # Pročelnik odsjeka, predstojnik zavoda (20+), red. prof. trajno
-# KOEFICIJENT = 2.716   # Pročelnik odsjeka, predstojnik zavoda (20+), red. prof.
-# KOEFICIJENT = 2.328   # Pročelnik odsjeka, predstojnik zavoda (20+), izv. prof.
-# KOEFICIJENT = 3.055   # Pročelnik odsjeka, predstojnik zavoda (<20), red. prof. trajno
-# KOEFICIJENT = 2.619   # Pročelnik odsjeka, predstojnik zavoda (<20), red. prof.
-# KOEFICIJENT = 2.231   # Pročelnik odsjeka, predstojnik zavoda (<20), izv. prof.
-# KOEFICIJENT = 3.007   # Voditelj laborat, šef katedre, red. prof. trajno
-# KOEFICIJENT = 2.570   # Voditelj laborat, šef katedre, red. prof.
-# KOEFICIJENT = 2.182   # Voditelj laborat, šef katedre, izv. prof.
-# ### Radna mjesta I. vrste u visokim učilištima i javnim institutima
-KOEFICIJENT = 2.958   # Red. prof. / zn. savj. - trajno zvanje
-# KOEFICIJENT = 2.425   # Red. prof. / zn. savj.
-# KOEFICIJENT = 2.037   # Izv. prof. / v. zn. sur.
-# KOEFICIJENT = 1.843   # Doc. / zn. sur. / prof. visoke škole
-# KOEFICIJENT = 1.843   # Knjižničarski savjetnik
-# KOEFICIJENT = 1.6     # Poslijedoktorand, viši predavač, viši knjižničar, struč. savj.
-# KOEFICIJENT = 1.406   # Asistent, dipl. knjižničar, viši stručni surad.
-# KOEFICIJENT = 1.261   # Stručni surad. u sustavu znanosti
-# KOEFICIJENT = 1.358   # Predavač
-# ### Radna mjesta II. vrste u visokim učilištima i javnim institutima
-# KOEFICIJENT = 1.067   # Viši tehničar, viši laborant
-# KOEFICIJENT = 1.018   # Knjižničar
-# ### Radna mjesta III. vrste u visokim učilištima i javnim institutima
-# KOEFICIJENT = 0.970   # Laborant, tehnički suradnik
-# KOEFICIJENT = 0.873   # Pomoćni knjižničar
+# KOEFICIJENT = 6.80    # Rektor sveučilišta
+# KOEFICIJENT = 5.50    # Ravnatelj instituta / dekan preko 1000 zaposlenika
+KOEFICIJENT = 4.35    # Red. prof. / zn. savj. - trajni izbor
+# KOEFICIJENT = 3.80    # Red. prof. / zn. savj - prvi izbor
+# KOEFICIJENT = 3.35    # Izv. prof. / v. zn. savj.
+# KOEFICIJENT = 2.90    # Docent / zn. sur.
+# KOEFICIJENT = 2.55    # Viši asistent
+# KOEFICIJENT = 2.45    # Viši predavač
+# KOEFICIJENT = 2.01    # Asistent
+
+# KOEFICIJENT = 1.25   # Radnik III. vrste
+# KOEFICIJENT = 1.06   # Čistač-spremač
 
 
 STAZ = 30  # godine staža
-
-# Dodatak za znanstveni stupanj:
-# Doktori u znanstveno-nastavnim zvanjima trebaju staviti 0.15. Inače 0.
-
-DOKTORAT = 0.15
 
 # Faktor odbitka:
 # Osnovni: 1.0
@@ -92,9 +73,6 @@ OSNOVNI_ODBITAK = 560
 STOPA1 = 23.6
 GRANICA1 = 4200  # Nisam siguran ni u iznos ni koji je to iznos
 STOPA2 = 35.4
-
-# Ima pravo na uvećanje po Sporazumu iz NN122:
-NN122 = False
 
 # ------------  GLOBALNI PARAMETRI   ---------------------
 
@@ -133,24 +111,7 @@ MINULIRAD = REDOVNIRAD * STAZ * 0.5/100
 print(fsr.format('Redovni rad (+neradni dani i g.o)', REDOVNIRAD))
 print(fsr.format('Minuli rad', MINULIRAD))
 
-# Do 2014. je bilo:
-DRKOEF = BODOVI * DOKTORAT
-DR_UVECANJE = DRKOEF * OSNOVICA
-print(fsr.format('Dodatak za doktorat', DR_UVECANJE))
-
-# Uvećanje po Sporazumu o dodacima iz studenog 2006.
-KOR_UVECANJE = BODOVI * OSNOVICA * 13.725/100
-print(fsr.format('Dodatak po sporazumu', KOR_UVECANJE))
-
-# Uvećanje po Sporazumu NN122/2019
-if NN122:
-    KOR_UVECANJE_NN122 = BODOVI * OSNOVICA * 6.11/100
-    print(fsr.format('Dodatak po sporazumu NN122', KOR_UVECANJE_NN122))
-else:
-    KOR_UVECANJE_NN122 = 0
-
-
-OSTVARENO = REDOVNIRAD + MINULIRAD + DR_UVECANJE + KOR_UVECANJE + KOR_UVECANJE_NN122
+OSTVARENO = REDOVNIRAD + MINULIRAD
 
 print(fsr.format('Bruto', OSTVARENO))
 print(ln)
