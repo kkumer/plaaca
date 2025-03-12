@@ -46,12 +46,15 @@ KOEFICIJENT = 4.35    # Red. prof. / zn. savj. - trajni izbor
 # KOEFICIJENT = 2.55    # Viši asistent
 # KOEFICIJENT = 2.45    # Viši predavač
 # KOEFICIJENT = 2.01    # Asistent
+# KOEFICIJENT = 2.40    # Stručni savjetnik u sustavu znanost i VO
+# KOEFICIJENT = 2.10    # Viši Stručni suradnik u sustavu znanost i VO
+# KOEFICIJENT = 1.86    # Stručni suradnik u sustavu znanost i VO
 
 # KOEFICIJENT = 1.25   # Radnik III. vrste
 # KOEFICIJENT = 1.06   # Čistač-spremač
 
 
-STAZ = 30  # godine staža
+STAZ = 31  # godine staža
 
 # Faktor odbitka:
 # Osnovni: 1.0
@@ -66,17 +69,17 @@ CLAN_SINDIKATA = 1  # 1=član  0=nečlan
 # -- Porezni parametri  --
 
 # Za Zagreb i druga područja koja NISU od posebne državne skrbi:
-OSNOVNI_ODBITAK = 560
+OSNOVNI_ODBITAK = 600
 
 # Stope oporezivanja za Zagreb
-# Za ostale gradove vidi npr. https://isplate.info/porez-na-dohodak-porezne-stope.aspx
-STOPA1 = 23.6
-GRANICA1 = 4200  # Nisam siguran ni u iznos ni koji je to iznos
-STOPA2 = 35.4
+# Za ostale gradove vidi npr. https://isplate.info/porez-na-dohodak-stope.aspx
+STOPA1 = 23.0
+GRANICA1 = 5000
+STOPA2 = 33.0
 
 # ------------  GLOBALNI PARAMETRI   ---------------------
 
-OSNOVICA = 947.18   # od listopada 2023.
+OSNOVICA = 975.60
 
 PRIJEVOZ = 38.49
 
