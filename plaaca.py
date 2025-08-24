@@ -79,7 +79,7 @@ STOPA2 = 33.0
 
 # ------------  GLOBALNI PARAMETRI   ---------------------
 
-OSNOVICA = 975.60
+OSNOVICA = 1004.87
 
 PRIJEVOZ = 38.49
 
