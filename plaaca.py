@@ -42,7 +42,7 @@
 # KOEFICIJENT = 5.50    # Ravnatelj instituta / dekan preko 1000 zaposlenika
 KOEFICIJENT = 4.35    # Red. prof. / zn. savj. - trajni izbor
 # KOEFICIJENT = 3.80    # Red. prof. / zn. savj - prvi izbor
-# KOEFICIJENT = 3.35    # Izv. prof. / v. zn. savj.
+# KOEFICIJENT = 3.35    # Izv. prof. / v. zn. sur.
 # KOEFICIJENT = 2.90    # Docent / zn. sur.
 # KOEFICIJENT = 2.55    # Viši asistent
 # KOEFICIJENT = 2.45    # Viši predavač
