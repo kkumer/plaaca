@@ -7,6 +7,7 @@
 |                                                                       |
 | cf. http://www.isplate.info/kalkulator-place-2017.aspx                |
 | cf. https://www.nsz.hr/kalkulator-place/                              |
+| Verzija: 3.1  2026-10-29    Nova osnovica od 1. 8. 2026.
 | Verzija: 3.0  2024-03-08    Novi sustav koeficijenata                 |           |
 | Verzija: 2.9  2023-01-11    Prelazak na Euro 1. 1. 2023.              |           |
 | Verzija: 2.8  2022-07-25    Nakon svibnja 2022. (nova osnovica)       |
@@ -54,7 +55,7 @@ KOEFICIJENT = 4.35    # Red. prof. / zn. savj. - trajni izbor
 # KOEFICIJENT = 1.06   # Čistač-spremač
 
 
-STAZ = 31  # godine staža
+STAZ = 32  # godine staža
 
 # Faktor odbitka:
 # Osnovni: 1.0
@@ -79,7 +80,7 @@ STOPA2 = 33.0
 
 # ------------  GLOBALNI PARAMETRI   ---------------------
 
-OSNOVICA = 1004.87
+OSNOVICA = 1025.00
 
 PRIJEVOZ = 38.49
 
